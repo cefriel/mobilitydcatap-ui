@@ -122,10 +122,16 @@
       }
     },
     "spatial_coverage": {
-      "type": "string",
+      "type": "array",
       "default": "http://publications.europa.eu/resource/authority/country/ITA",
       "description": "A geographic region that is covered by the delivered content. It can be represented via a named place (controlled vocabulary) or with geographic coordinates, according to <a href='https://joinup.ec.europa.eu/release/how-should-dctspatial-and-dctlocation-be-used' target='_blank' rel='noopener noreferrer'>DCAT-AP guidelines</a>. For mobility data portals, usage of a named place is preferred. Many mobility data providers represent public authorities such as states, regions, municipalities etc, which can be easily represented via named places. In contrast, defining of coordinates per dataset might be error-prone and inconsistent. Named places are coded via controlled vocabularies such as the EU authority tables, <a href='https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/nuts' target='_blank' rel='noopener noreferrer'>EU Taxonomy \"Nomenclature of Territorial Units for Statistics\" (NUTS)</a> or <a href='http://sws.geonames.org/' target='_blank' rel='noopener noreferrer'>GeoNames</a>.",
-      "title": "Area covered"
+      "title": "Area covered",
+      "items": {
+        "type": "string"
+      },
+      "layout": {
+        "comp": "combobox"
+      }
     },
     "distributions": {
       "title": "Distributions",

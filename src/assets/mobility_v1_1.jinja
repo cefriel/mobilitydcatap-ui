@@ -74,15 +74,21 @@ foaf:primaryTopic {{asset_id  | safe}} .
     {%- endif -%}
     {%- endfor -%}
 
-    {%if '://' in json_content.spatial_coverage %}
-    dcterms:spatial <{{json_content.spatial_coverage}}>;
-    {%else%}
-    dcterms:spatial """{{json_content.spatial_coverage}}""";
-    {%endif%}
+    {%- if json_content.spatial_coverage is string -%}
+    {%- set spatial_coverages = [json_content.spatial_coverage] -%}
+    {%- elif json_content.spatial_coverage -%}
+    {%- set spatial_coverages = json_content.spatial_coverage -%}
+    {%- else -%}
+    {%- set spatial_coverages = [] -%}
+    {%- endif -%}
 
-    {%if json_content.spatial_aggregation%}
-    dcat:spatialResolutionInMeters """{{json_content.spatial_aggregation}}""";
+    {%- for spatial_coverage in spatial_coverages -%}
+    {%if '://' in spatial_coverage %}
+    dcterms:spatial <{{spatial_coverage}}>;
+    {%else%}
+    dcterms:spatial """{{spatial_coverage}}""";
     {%endif%}
+    {%- endfor -%}
 
     {%if json_content.temporal_coverage_start or json_content.temporal_coverage_end%}
     dcat:temporal [ a dcterms:PeriodOfTime;
