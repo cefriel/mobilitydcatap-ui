@@ -87,7 +87,7 @@
     },
     "mobility_theme_subcategory": {
       "title": "Mobility theme subcategory",
-      "description": "Mobility-related theme sub-categories (i.e., a specific subject, category, or type) of the delivered content, The theme is described via the <a href='https://w3id.org/mobilitydcat-ap/mobility-theme' target='_blank' rel='noopener noreferrer'>mobilitydcatap:mobility-theme</a> vocabulary in two hierarchy levels: this is the 2nd level, an optional field detailing the category previously entered via one or several sub-categories.",
+      "description": "Mobility-related theme sub-categories (i.e., a specific subject, category, or type) of the delivered content. The theme is described via the <a href='https://w3id.org/mobilitydcat-ap/mobility-theme' target='_blank' rel='noopener noreferrer'>mobilitydcatap:mobility-theme</a> vocabulary in two hierarchy levels: this is the 2nd level, an optional field detailing the category previously entered via one or several sub-categories.",
       "type": "array",
       "items": {
         "type": "string"
@@ -176,7 +176,7 @@
           },
           "rights": {
             "title": "Rights",
-            "description": "The rights associated with the data. Select from the <a href='https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage' target='_blank' rel='noopener noreferrer'>mobilitydcatap:conditions-for-access-and-usage</a> vocabulary.",
+            "description": "The rights associated with the distribution. In particular, a statement about the intellectual property rights (IPR). As a minimum, it should include an information on the type of conditions for access and usage. Select from the <a href='https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage' target='_blank' rel='noopener noreferrer'>mobilitydcatap:conditions-for-access-and-usage</a> vocabulary.",
             "type": "array",
             "items": {
               "type": "string"

@@ -27,20 +27,20 @@
     "name": {
       "type": "string",
       "title": "Name",
-      "description": "Name of the data source",
+      "description": "The name given to the dataset in a generic term. The name should be a meaningful, unique and unambiguous label.",
       "default": "My Data Source"
     },
     "description": {
       "type": "string",
       "title": "Description",
       "layout": "textarea",
-      "description": "Description of the data contained in the data source",
+      "description": "Information about the dataset as a brief, free-text description. It is used only for a brief overview.",
       "default": "My Data Source contains mobility data about mobility things."
     },
     "publisher_name": {
       "type": "string",
       "title": "Publisher name",
-      "description": "Name of the entity providing the data source",
+      "description": "An entity (company and person) that publishes the corresponding dataset. This entity is responsible for the provisioning of a dataset. The entity also concludes a contract, if applicable.",
       "default": "Cefriel Data Publisher"
     },
     "id": {
@@ -65,7 +65,7 @@
     },
     "mobility_theme_category": {
       "title": "Mobility theme category",
-      "description": "Categories describing the data in the data source. Select from the <a href='https://w3id.org/mobilitydcat-ap/mobility-theme' target='_blank' rel='noopener noreferrer'>mobilitydcatap:mobility-theme</a> vocabulary.",
+      "description": "Mobility-related theme categories (i.e., a specific subject, category, or type) of the delivered content. A dataset may be associated with multiple themes. A theme is important for data seekers who are interested in a particular type of data content. The theme is described via the <a href='https://w3id.org/mobilitydcat-ap/mobility-theme' target='_blank' rel='noopener noreferrer'>mobilitydcatap:mobility-theme</a> vocabulary in two hierarchy levels: this is the 1st level describing the classification of the data content on an aggregated level.",
       "type": "array",
       "minItems": 1,
       "errorMessage": {
@@ -87,7 +87,7 @@
     },
     "mobility_theme_subcategory": {
       "title": "Mobility theme subcategory",
-      "description": "Subcategories associated with the selected categories. Select from the <a href='https://w3id.org/mobilitydcat-ap/mobility-theme' target='_blank' rel='noopener noreferrer'>mobilitydcatap:mobility-theme</a> vocabulary.",
+      "description": "Mobility-related theme sub-categories (i.e., a specific subject, category, or type) of the delivered content. The theme is described via the <a href='https://w3id.org/mobilitydcat-ap/mobility-theme' target='_blank' rel='noopener noreferrer'>mobilitydcatap:mobility-theme</a> vocabulary in two hierarchy levels: this is the 2nd level, an optional field detailing the category previously entered via one or several sub-categories.",
       "type": "array",
       "items": {
         "type": "string"
@@ -108,7 +108,7 @@
     },
     "accrual_periodicity": {
       "title": "Accrual periodicity",
-      "description": "How often the content of the data source is updated. Select from the <a href='http://publications.europa.eu/resource/authority/frequency' target='_blank' rel='noopener noreferrer'>EU Publications Office frequency authority</a> vocabulary.",
+      "description": "How often the delivered content is updated. This information tells a data consumer how often it is updated on the data platform, so the data consumer might align the frequency of data retrieval accordingly. For data services, e.g., data feeds, the frequency should correspond to the technical upload / data push frequency. For static datasets, it should correspond to the expected change frequency. Select from the <a href='https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/frequency' target='_blank' rel='noopener noreferrer'>EU Publications Office frequency authority</a> vocabulary.",
       "type": "string",
       "layout": {
         "comp": "combobox",
@@ -124,19 +124,19 @@
     "spatial_coverage": {
       "type": "string",
       "default": "http://publications.europa.eu/resource/authority/country/ITA",
-      "description": "The geographical coverage of the data in the data source (IRI or free text).",
+      "description": "A geographic region that is covered by the delivered content. It can be represented via a named place (controlled vocabulary) or with geographic coordinates, according to <a href='https://joinup.ec.europa.eu/release/how-should-dctspatial-and-dctlocation-be-used' target='_blank' rel='noopener noreferrer'>DCAT-AP guidelines</a>. For mobility data portals, usage of a named place is preferred. Many mobility data providers represent public authorities such as states, regions, municipalities etc, which can be easily represented via named places. In contrast, defining of coordinates per dataset might be error-prone and inconsistent. Named places are coded via controlled vocabularies such as the EU authority tables, <a href='https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/nuts' target='_blank' rel='noopener noreferrer'>EU Taxonomy \"Nomenclature of Territorial Units for Statistics\" (NUTS)</a> or <a href='http://sws.geonames.org/' target='_blank' rel='noopener noreferrer'>GeoNames</a>.",
       "title": "Area covered"
     },
     "distributions": {
       "title": "Distributions",
-      "description": "A specific representation of the dataset (dcat:Distribution).",
+      "description": "A distribution describes the data formats and communication methods for a dataset. There may be one or multiple distributions for one dataset. For example, the same dataset (e.g. static parking information for truck drivers) can be provided in different ways e.g. as downloadable zip file or as XML using a SOAP web service. These are two distributions based on one dataset.",
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
           "data_schema": {
             "title": "Data schema/model",
-            "description": "The data schema/model adopted to represent the data. Select from the <a href='https://w3id.org/mobilitydcat-ap/mobility-data-standard' target='_blank' rel='noopener noreferrer'>mobilitydcatap:mobilityDataStandard</a> vocabulary.",
+            "description": "The mobility data standard, as applied for the delivered content within the distribution. A mobility data standard, e.g., DATEX II, combines syntax and semantic definitions of entities in a certain domain (e.g., for DATEX II: road traffic information), and optionally adds technical rules for data exchange. Select from the <a href='https://w3id.org/mobilitydcat-ap/mobility-data-standard' target='_blank' rel='noopener noreferrer'>mobilitydcatap:mobilityDataStandard</a> vocabulary, listing common mobility data standards. If no established mobility data standard is applied, the \"other\" entry should be used.",
             "type": "string",
             "layout": {
               "comp": "combobox",
@@ -152,7 +152,7 @@
           "format": {
             "type": "string",
             "title": "Resource format",
-            "description": "The format used to encode the data. Select from the <a href='http://publications.europa.eu/resource/authority/file-type' target='_blank' rel='noopener noreferrer'>EU Publications Office file-type authority</a> vocabulary.",
+            "description": "The technical syntax of the delivered content within the distribution. It describes the base standard that specifies syntactically correct documents. On this level, only base elements of building documents property are specified and can be proved by syntax checks. The resulting document can then be validated by syntax checks. Select from the <a href='https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/file-type' target='_blank' rel='noopener noreferrer'>EU Publications Office file-type authority</a> vocabulary.",
             "layout": {
               "comp": "combobox",
               "getItems": {
@@ -166,7 +166,7 @@
           },
           "rights": {
             "title": "Rights",
-            "description": "The rights associated with the data. Select from the <a href='https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage' target='_blank' rel='noopener noreferrer'>mobilitydcatap:conditions-for-access-and-usage</a> vocabulary.",
+            "description": "The rights associated with the distribution. In particular, a statement about the intellectual property rights (IPR). As a minimum, it should include an information on the type of conditions for access and usage. Select from the <a href='https://w3id.org/mobilitydcat-ap/conditions-for-access-and-usage' target='_blank' rel='noopener noreferrer'>mobilitydcatap:conditions-for-access-and-usage</a> vocabulary.",
             "type": "string",
             "layout": {
               "comp": "combobox",
@@ -182,7 +182,7 @@
           "access_url": {
             "type": "string",
             "title": "Access URL",
-            "description": "URL redirecting to a webpage or an endpoint to access the data.",
+            "description": "A URL that gives access to a distribution of the dataset. Depending on the type of data provision, there are different options for describing the URL. For data services, e.g., API, broker services, data feeds, etc., the URL may be the end point of such service. If some agreements between the data provider and the data user need to be established first, the access URL may link to web page, where the access is further arranged, e.g., initiating a subscription process. For data which can be downloaded directly, the URL should be a direct link to a downloadable file in a given format. For other cases, where data cannot be directly accessed or downloaded via the platform, the access URL may be a link to an external service or a website which enables access to the data.",
             "default": "http://www.cefriel.com/data/my_data_source"
           }
         }
